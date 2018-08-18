@@ -5,6 +5,10 @@ import axios from 'axios'
 
 class App extends Component {
 
+    state = {
+        foursquareVenues: []
+    }
+
     getFoursquareVenues = () => {
         const apiEndpoint = "https://api.foursquare.com/v2/venues/explore?"
         const foursquareParameters = {
@@ -17,7 +21,8 @@ class App extends Component {
 
         axios.get(apiEndpoint + new URLSearchParams(foursquareParameters))
             .then(response => {
-                console.log(response)
+                this.setState({foursquareVenues: response.data.response.groups[0].items})
+                console.log(this.state)
             })
             .catch(error => {
                 console.log(`An error occurred: ${error}`)
