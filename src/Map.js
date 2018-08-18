@@ -19,7 +19,7 @@ class Map extends Component {
 
     render() { 
         return(
-            <div id="map" class="map-container">
+            <div id="map" className="map-container">
                 {/* Initialise the map here*/}
             </div>
         );
