@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import mapboxgl from './mapbox-gl'
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js'
 
 class Map extends Component {
 
@@ -7,6 +7,7 @@ class Map extends Component {
         return(
             <div id="map" class="map-container">
                 {/* Initialise the map here*/}
+
             </div>
         );
     }
