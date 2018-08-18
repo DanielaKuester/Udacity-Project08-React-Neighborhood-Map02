@@ -10,8 +10,8 @@ class App extends Component {
         const foursquareParameters = {
             client_id: "4QQDCSI1SQPEN4AUMQFAHJUWC3RK5F4WV2PVL1SCFKK1U0W1",
             client_secret: "SNX4V5ZR3IEWHWXEBPY3KDLTZWN4GIUUBPKO2SXV5KCLJASI",
-            query: "sights",
-            near: "Lyon, France",
+            query: "arts",
+            near: "Lyon, FR",
             v: 20182507
         }
 
