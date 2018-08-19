@@ -8,7 +8,10 @@ class App extends Component {
 
     state = {
         foursquareVenues: [],
-        color: "blue"
+        markerProperties: {
+        color: "blue",
+        className: "my-markers"
+        }
     }
 
     /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
@@ -59,7 +62,7 @@ class App extends Component {
 
     addMarkers = () => {
         // create the marker
-        this.marker = new mapboxgl.Marker({color: this.props.color})
+        this.marker = new mapboxgl.Marker(this.state.markerProperties)
         .setLngLat([4.841389, 45.758889])
         .addTo(this.map)
     }
