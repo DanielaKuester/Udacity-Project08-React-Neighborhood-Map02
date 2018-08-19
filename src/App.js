@@ -58,6 +58,8 @@ class App extends Component {
             center: [4.841389, 45.758889],
             zoom: 12
         });
+
+        this.addMarkers()
     }
 
     addMarkers = () => {
