@@ -34,7 +34,7 @@ class App extends Component {
             .then(response => {
                 this.setState({
                     foursquareVenues: response.data.response.groups[0].items
-                })
+                }, this.initialiseMap())
                 console.log(this.state.foursquareVenues)
             })
             .catch(error => {
@@ -78,7 +78,6 @@ class App extends Component {
             <div className="App">
                 <main>
                     <Map
-                        color={this.state.color}
                         venues={this.state.foursquareVenues}
                         initialiseMap={this.initialiseMap}
                         addMarkers={this.addMarkers}

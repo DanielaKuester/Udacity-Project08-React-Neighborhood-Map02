@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js'
 
 class Map extends Component {
 
 
     componentDidMount() {
-        this.props.initialiseMap()
-        this.props.addMarkers()
+        //this.props.initialiseMap()
+        //this.props.addMarkers()
     }
 
     render() { 
