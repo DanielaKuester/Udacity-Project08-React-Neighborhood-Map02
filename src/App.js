@@ -9,6 +9,12 @@ class App extends Component {
         foursquareVenues: []
     }
 
+    /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
+     * https://www.youtube.com/watch?v=dAhMIF0fNpo&list=PLgOB68PvvmWCGNn8UMTpcfQEiITzxEEA1&index=3
+     * It is not as difficult as I imagined it beforehand, but the
+     * getFoursquareVenues()-function is a slightly adjusted version of his tutorial!
+     */
+
     getFoursquareVenues = () => {
         const apiEndpoint = "https://api.foursquare.com/v2/venues/explore?"
         const foursquareParameters = {
