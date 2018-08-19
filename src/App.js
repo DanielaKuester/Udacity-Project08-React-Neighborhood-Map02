@@ -28,8 +28,10 @@ class App extends Component {
 
         axios.get(apiEndpoint + new URLSearchParams(foursquareParameters))
             .then(response => {
-                this.setState({foursquareVenues: response.data.response.groups[0].items})
-                console.log(this.state)
+                this.setState({
+                    foursquareVenues: response.data.response.groups[0].items
+                })
+                console.log(this.state.foursquareVenues)
             })
             .catch(error => {
                 console.log(`An error occurred: ${error}`)
