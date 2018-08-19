@@ -6,7 +6,8 @@ import axios from 'axios'
 class App extends Component {
 
     state = {
-        foursquareVenues: []
+        foursquareVenues: [],
+        color: "blue"
     }
 
     /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
@@ -43,7 +44,9 @@ class App extends Component {
         return (
             <div className="App">
                 <main>
-                    <Map />
+                    <Map
+                        color={this.state.color}
+                    />
                 </main>
             </div>
         );

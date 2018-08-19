@@ -23,7 +23,7 @@ class Map extends Component {
 
     addMarkers = () => {
         // create the marker
-        this.marker = new mapboxgl.Marker({color: "blue", className: 'my-marker'})
+        this.marker = new mapboxgl.Marker({color: this.props.color})
         .setLngLat([4.841389, 45.758889])
         .addTo(this.map)
     }
