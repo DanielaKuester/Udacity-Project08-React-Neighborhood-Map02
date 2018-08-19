@@ -4,8 +4,7 @@ class Map extends Component {
 
 
     componentDidMount() {
-        //this.props.initialiseMap()
-        //this.props.addMarkers()
+        this.props.initialiseMap()
     }
 
     render() { 

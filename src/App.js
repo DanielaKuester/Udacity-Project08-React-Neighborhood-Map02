@@ -34,7 +34,7 @@ class App extends Component {
             .then(response => {
                 this.setState({
                     foursquareVenues: response.data.response.groups[0].items
-                }, this.initialiseMap())
+                })
                 console.log(this.state.foursquareVenues)
             })
             .catch(error => {
