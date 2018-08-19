@@ -78,7 +78,7 @@ class App extends Component {
                     .setHTML("<h1>Hello World!</h1>")
 
                 // Create markers with the data from the Foursquare API
-                this.marker = new mapboxgl.Marker(this.state.markerProperties)
+                return this.marker = new mapboxgl.Marker(this.state.markerProperties)
                 .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
                 .setPopup(popup)
                 .addTo(this.map);
