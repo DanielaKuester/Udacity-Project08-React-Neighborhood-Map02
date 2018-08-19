@@ -69,13 +69,19 @@ class App extends Component {
         
     }
 
+    /**
+     * I used Elharony's tutorial to fix a problem that I had in creating my
+     * markers. Thanks to his tutorial, I found out that the asynchronous
+     * data fetching from the Foursquare API was the culprit:
+     * https://www.youtube.com/watch?v=_1RjbT5dIeM&list=PLgOB68PvvmWCGNn8UMTpcfQEiITzxEEA1&index=5
+    */
     addMarkers = () => {
         this.state.foursquareVenues
             .map(myVenue => {
                 // Create popups with the data from the Foursquare API
                 const popup = new mapboxgl.Popup({offset: 40, className: 'my-class'})
                     .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
-                    .setHTML("<h1>Hello World!</h1>")
+                    .setHTML(`<h1>${myVenue.venue.name}</h1>`)
 
                 // Create markers with the data from the Foursquare API
                 return this.marker = new mapboxgl.Marker(this.state.markerProperties)
