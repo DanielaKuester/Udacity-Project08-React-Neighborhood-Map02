@@ -61,16 +61,29 @@ class App extends Component {
 
         this.map.on('load', () => {
             this.addMarkers();
+            this.addPopup();
         })
+    }
+
+    addPopup = () => {
+        
     }
 
     addMarkers = () => {
         this.state.foursquareVenues
             .map(myVenue => {
+                // Create popups with the data from the Foursquare API
+                const popup = new mapboxgl.Popup({offset: 40, className: 'my-class'})
+                    .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
+                    .setHTML("<h1>Hello World!</h1>")
+
+                // Create markers with the data from the Foursquare API
                 this.marker = new mapboxgl.Marker(this.state.markerProperties)
                 .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
+                .setPopup(popup)
                 .addTo(this.map);
-            })
+            });
+        this.addPopup()
     }
 
     componentDidMount() {
