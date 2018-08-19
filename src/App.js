@@ -59,14 +59,18 @@ class App extends Component {
             zoom: 12
         });
 
-        this.addMarkers()
+        this.map.on('load', () => {
+            this.addMarkers();
+        })
     }
 
     addMarkers = () => {
-        // create the marker
-        this.marker = new mapboxgl.Marker(this.state.markerProperties)
-        .setLngLat([4.841389, 45.758889])
-        .addTo(this.map)
+        this.state.foursquareVenues
+            .map(myVenue => {
+                this.marker = new mapboxgl.Marker(this.state.markerProperties)
+                .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
+                .addTo(this.map);
+            })
     }
 
     componentDidMount() {
