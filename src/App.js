@@ -81,7 +81,10 @@ class App extends Component {
                 // Create popups with the data from the Foursquare API
                 const popup = new mapboxgl.Popup({offset: 40, className: 'my-class'})
                     .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
-                    .setHTML(`<h1>${myVenue.venue.name}</h1>`)
+                    .setHTML(
+                        `<h1>${myVenue.venue.name}</h1>
+                        <p>${myVenue.venue.location.formattedAddress}</p>`
+                    )
 
                 // Create markers with the data from the Foursquare API
                 return this.marker = new mapboxgl.Marker(this.state.markerProperties)
