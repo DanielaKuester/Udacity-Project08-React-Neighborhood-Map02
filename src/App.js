@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js'
 import Map from './Map'
 import axios from 'axios'
 
@@ -38,6 +39,31 @@ class App extends Component {
             })
     }
 
+    /**
+     * I already tried beforehand to initialise the map with the help of a separate function.
+     * I used this torial by Elharony to initialise my map:
+     * https://www.youtube.com/watch?v=W5LhLZqj76s&list=PLgOB68PvvmWCGNn8UMTpcfQEiITzxEEA1&index=2
+     * I would like to use "const map = new mapboxgl.Map();" instead of "this.map" to create the map
+     * and "const marker = new mapboxgl.Marker({})" instead of "this.marker" to create a new marker.
+     */
+
+    initialiseMap = () => {
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuaWVsYS1rdWVzdGVyIiwiYSI6ImNqam9jdjF1YTAxczQzcG9na3JrZmh2bnkifQ.zMFUT-fI5tsviUOPZsJxog';
+        this.map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v10',
+            center: [4.841389, 45.758889],
+            zoom: 12
+        });
+    }
+
+    addMarkers = () => {
+        // create the marker
+        this.marker = new mapboxgl.Marker({color: this.props.color})
+        .setLngLat([4.841389, 45.758889])
+        .addTo(this.map)
+    }
+
     componentDidMount() {
         this.getFoursquareVenues()
     }
@@ -48,6 +74,9 @@ class App extends Component {
                 <main>
                     <Map
                         color={this.state.color}
+                        venues={this.state.foursquareVenues}
+                        initialiseMap={this.initialiseMap}
+                        addMarkers={this.addMarkers}
                     />
                 </main>
             </div>
