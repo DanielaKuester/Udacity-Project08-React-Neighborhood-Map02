@@ -10,10 +10,11 @@ class App extends Component {
     state = {
         foursquareVenues: [],
         markerProperties: {
-        color: "blue",
-        className: "my-markers"
+            color: "blue",
+            className: "my-markers"
         },
-        markers: []
+        markers: [],
+        id: []
     }
 
     /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
@@ -83,6 +84,9 @@ class App extends Component {
                         `<h1>${myVenue.venue.name}</h1>
                         <p>${myVenue.venue.location.formattedAddress}</p>`
                     )
+
+                let index = this.state.markers.length
+                this.state.id.push(index)
                 
                 // Create markers with the data from the Foursquare API
                 let marker = new mapboxgl.Marker(this.state.markerProperties)
@@ -93,6 +97,16 @@ class App extends Component {
                 return this.state.markers.push(marker)
             }, console.log(this.state.markers));
     }
+
+    handleClick(e) {
+        e.preventDefault();
+        console.log(this.state.markers)
+        /*console.log(e.target);
+        const index = e.target.dataset.index;
+        console.log(e.target.dataset.index);
+        this.state.locations[index-1].marker.togglePopup()
+        console.log(this.state.locations[index-1].marker);*/
+      }
 
     componentDidMount() {
         this.getFoursquareVenues()
