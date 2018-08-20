@@ -9,7 +9,9 @@ body {
   position: absolute;
   top: 0%;
   bottom: 0;
-  width: 84%;
+  width: 80%;
+  margin-left: 20%;
+  margin-right: 0;
 }
 
 .mapboxgl-marker:hover {
@@ -23,12 +25,16 @@ body {
   flex-direction: row;
 }
 
-.sidebar {
+#sidebar {
   position: absolute;
-  width: 10%;
+  width: 20%;
   height: 100%;
   background-color: cadetblue;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+}
+
+.button {
+  margin-left: 15px;
 }

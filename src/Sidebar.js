@@ -18,7 +18,7 @@ class Sidebar extends Component {
                                         className={`button ${myVenue.venue.name}`}
                                         //onClick={this.handleClick.bind(this)}
                                         >
-                                            {myVenue.venue.name}
+                                            &#128270;
                                         </button>
                                     </li>
                                 ))
