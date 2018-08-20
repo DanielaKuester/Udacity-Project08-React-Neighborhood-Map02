@@ -18,7 +18,7 @@ class Sidebar extends Component {
                                         className={`button ${myVenue.venue.name}`}
                                         //onClick={this.handleClick.bind(this)}
                                         >
-                                            &#128270;
+                                            <span role="img" aria-label="search-button">&#128270;</span>
                                         </button>
                                     </li>
                                 ))
