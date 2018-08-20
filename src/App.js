@@ -12,7 +12,8 @@ class App extends Component {
         markerProperties: {
         color: "blue",
         className: "my-markers"
-        }
+        },
+        markers: []
     }
 
     /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
@@ -82,13 +83,15 @@ class App extends Component {
                         `<h1>${myVenue.venue.name}</h1>
                         <p>${myVenue.venue.location.formattedAddress}</p>`
                     )
-
+                
                 // Create markers with the data from the Foursquare API
-                return this.marker = new mapboxgl.Marker(this.state.markerProperties)
+                let marker = new mapboxgl.Marker(this.state.markerProperties)
                 .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
                 .setPopup(popup)
-                .addTo(this.map);
-            });
+                .addTo(this.map)
+
+                this.state.markers.push(marker)
+            }, console.log(this.state.markers));
     }
 
     componentDidMount() {
