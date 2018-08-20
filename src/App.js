@@ -90,7 +90,7 @@ class App extends Component {
                 .setPopup(popup)
                 .addTo(this.map)
 
-                this.state.markers.push(marker)
+                return this.state.markers.push(marker)
             }, console.log(this.state.markers));
     }
 
