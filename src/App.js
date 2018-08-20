@@ -98,9 +98,11 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <main>
+                <main className="container">
                     <aside id="sidebar">
-                        <Sidebar />
+                        <Sidebar
+                            foursquareVenues={this.state.foursquareVenues}
+                        />
                     </aside>
                     <section>
                         <Map

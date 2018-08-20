@@ -2,16 +2,33 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: aquamarine;
 }
 
 #map {
   position: absolute;
   top: 0%;
   bottom: 0;
-  width: 100vw;
+  width: 84%;
 }
 
 .mapboxgl-marker:hover {
   opacity: 0.7;
   cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.sidebar {
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  background-color: cadetblue;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
