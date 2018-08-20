@@ -61,13 +61,9 @@ class App extends Component {
 
         this.map.on('load', () => {
             this.addMarkers();
-            this.addPopup();
         })
     }
 
-    addPopup = () => {
-        
-    }
 
     /**
      * I used Elharony's tutorial to fix a problem that I had in creating my
@@ -92,7 +88,6 @@ class App extends Component {
                 .setPopup(popup)
                 .addTo(this.map);
             });
-        this.addPopup()
     }
 
     componentDidMount() {
