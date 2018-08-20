@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js'
 import Map from './Map'
+import Sidebar from './Sidebar'
 import axios from 'axios'
 
 class App extends Component {
@@ -98,11 +99,16 @@ class App extends Component {
         return (
             <div className="App">
                 <main>
-                    <Map
-                        venues={this.state.foursquareVenues}
-                        initialiseMap={this.initialiseMap}
-                        addMarkers={this.addMarkers}
-                    />
+                    <aside id="sidebar">
+                        <Sidebar />
+                    </aside>
+                    <section>
+                        <Map
+                            venues={this.state.foursquareVenues}
+                            initialiseMap={this.initialiseMap}
+                            addMarkers={this.addMarkers}
+                        />
+                    </section>
                 </main>
             </div>
         );
