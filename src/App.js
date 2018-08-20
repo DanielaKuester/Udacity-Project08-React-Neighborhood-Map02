@@ -89,7 +89,11 @@ class App extends Component {
                 this.state.id.push(index)
                 
                 // Create markers with the data from the Foursquare API
-                let marker = new mapboxgl.Marker(this.state.markerProperties)
+                let marker = new mapboxgl.Marker({
+                    color: this.state.markerProperties.color,
+                    className: this.state.markerProperties.className,
+                    index: this.state.id
+                })
                 .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
                 .setPopup(popup)
                 .addTo(this.map)
@@ -100,7 +104,7 @@ class App extends Component {
 
     handleClick(e) {
         e.preventDefault();
-        console.log(this.state.markers)
+        console.log(this.props)
         /*console.log(e.target);
         const index = e.target.dataset.index;
         console.log(e.target.dataset.index);
@@ -119,6 +123,8 @@ class App extends Component {
                     <aside id="sidebar">
                         <Sidebar
                             foursquareVenues={this.state.foursquareVenues}
+                            handleClick={this.handleClick}
+                            markers={this.state.markers}
                         />
                     </aside>
                     <section>
