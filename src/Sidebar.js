@@ -6,7 +6,7 @@ class Sidebar extends Component {
         return (
             <div id="location-sidebar">
                 <ul className="location-list">
-                        {
+                        {   
                             this.props.foursquareVenues
                                 .map((myVenue) => (
                                     <li key={myVenue.venue.id}>
@@ -14,8 +14,8 @@ class Sidebar extends Component {
                                         <button
                                         type="button"
                                         key={myVenue.venue.id}
-                                        data-index={myVenue.venue.id}
-                                        className={`button ${myVenue.venue.name} ${myVenue.venue.id}`}
+                                        data-index={this.props.markers}
+                                        className={`${[myVenue.venue.location.lng, myVenue.venue.location.lat]}`}
                                         onClick={this.props.handleClick.bind(this)}
                                         >
                                             More info

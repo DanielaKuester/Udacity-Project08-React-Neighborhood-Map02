@@ -13,8 +13,7 @@ class App extends Component {
             color: "blue",
             className: "my-markers"
         },
-        markers: [],
-        id: []
+        markers: []
     }
 
     /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
@@ -78,7 +77,7 @@ class App extends Component {
         this.state.foursquareVenues
             .map(myVenue => {
                 // Create popups with the data from the Foursquare API
-                const popup = new mapboxgl.Popup({offset: 40, className: 'my-class'})
+                const popup = new mapboxgl.Popup({offset: 40, className: `${[myVenue.venue.location.lng, myVenue.venue.location.lat]}`})
                     .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
                     .setHTML(
                         `<h1>${myVenue.venue.name}</h1>
@@ -86,8 +85,6 @@ class App extends Component {
                     )
                 
                 //console.log(myVenue.venue.id)
-                let index = this.state.markers.length
-                this.state.id.push(index)
                 //console.log(this.state.markers.length)
                 //console.log(this.state.id)
                 
@@ -106,30 +103,18 @@ class App extends Component {
 
     handleClick(e) {
         e.preventDefault();
-
+        console.log(e.target.className)
+        console.log(e.target)
         let markersArray = this.props.markers
         for (let i = 0; i < markersArray.length; i++) {
-            console.log(i);
+
+            // Match the class names of the Popups with the class Name of the clicked button
+            if (this.props.markers[i].getPopup().options.className === e.target.className) {
+                console.log("You did it! You are a genius!");
+                this.props.markers[i].togglePopup()
+            }
         }
-
-
-        //let index;
-        //console.log(this)
-        //console.log(this.props.markers)
-        console.log(this.props.markers.length)
-        console.log(this.props.markers.indexOf(this.props.markers[29]))
-        console.log(this.props.foursquareVenues)
-        console.log(e.target)
-        console.log(e.target.className)
-        this.props.markers[0].togglePopup()
-        //console.log(this.props.id)
-        //this.props.foursquareVenues.indexOf(e.target.dataset.index)
-        /*console.log(e.target);
-        const index = e.target.dataset.index;
-        console.log(e.target.dataset.index);
-        this.state.locations[index-1].marker.togglePopup()
-        console.log(this.state.locations[index-1].marker);*/
-      }
+    }
 
     componentDidMount() {
         this.getFoursquareVenues()
