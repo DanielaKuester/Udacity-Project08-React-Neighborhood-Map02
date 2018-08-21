@@ -10,10 +10,10 @@ class App extends Component {
     state = {
         foursquareVenues: [],
         markerProperties: {
-            color: "blue",
-            className: "my-markers"
+            color: "blue"
         },
-        markers: []
+        markers: [],
+        isActiveMarker: null
     }
 
     /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
@@ -101,6 +101,13 @@ class App extends Component {
             }, console.log(this.state.markers));
     }
 
+    activateMarker = () => {
+        this.setState({
+            isActiveMarker: true,
+            markerProperties: {color: "red"}
+        })
+    }
+
     handleClick(e) {
         e.preventDefault();
         console.log(e.target.className)
@@ -111,9 +118,16 @@ class App extends Component {
             // Match the class names of the Popups with the class Name of the clicked button
             if (this.props.markers[i].getPopup().options.className === e.target.className) {
                 console.log("You did it! You are a genius!");
-                this.props.markers[i].togglePopup()
+                const activeMarker = this.props.markers[i]
+                activeMarker.togglePopup()
+                    /*if (this.props.markers[i] === activeMarker) {
+                        activeMarker.togglePopup()
+                        console.log(`Active Marker: ${this.props.isActiveMarker}`)
+                        this.props.activateMarker
+                    }*/
             }
         }
+
     }
 
     componentDidMount() {
@@ -129,6 +143,7 @@ class App extends Component {
                             foursquareVenues={this.state.foursquareVenues}
                             handleClick={this.handleClick}
                             markers={this.state.markers}
+                            activateMarker={this.activateMarker}
                         />
                     </aside>
                     <section>
