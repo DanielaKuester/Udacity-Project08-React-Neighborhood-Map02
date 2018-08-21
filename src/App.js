@@ -106,6 +106,8 @@ class App extends Component {
             isActiveMarker: true,
             markerProperties: {color: "red"}
         })
+        console.log(this.state.isActiveMarker)
+        console.log(this.state.markerProperties)
     }
 
     handleClick(e) {
@@ -125,9 +127,10 @@ class App extends Component {
                         console.log(`Active Marker: ${this.props.isActiveMarker}`)
                         this.props.activateMarker
                     }*/
+                this.props.activateMarker()
             }
         }
-
+        
     }
 
     componentDidMount() {
