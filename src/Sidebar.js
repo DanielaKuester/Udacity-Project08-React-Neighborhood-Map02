@@ -1,15 +1,58 @@
 import React, { Component } from 'react';
 
 class Sidebar extends Component {
+
+    state = {
+        query: '',
+        searchedLocations: []
+    }
+
+    /**
+     * Here, I am using and adapting what I have learned from the
+     * Udacity course lessons about controlled components.
+     * https://classroom.udacity.com/nanodegrees/nd001/parts/c3e7b0d6-ffef-4421-b5fc-6df10fd0a1ae/modules/82766b2b-1870-4904-aa90-8ccbe63928c5/lessons/14331e60-a548-4cfb-a326-054545da8927/concepts/fc3f11d3-8779-4d8a-8a23-1cd782f8ddf3
+     * I'm really excited to try out the RegExp extension!
+     * I have copied some of the search field code from my
+     * MyReads-project to see if I can save time by altering it.
+     */
+    
+    updateQuery = (query) => {
+        this.setState({ query })
+    }
+
+    /*
+    updateSearchedLocations = (query) => {
+        this.setState({ query })
+    }*/
+
+    /*
+    updateSearchedBooks = (query) => {
+        if (query) {
+            BooksAPI.search(query).then((searchedBooks) => {
+                if (searchedBooks.error) {
+                    this.setState({ searchedBooks: [] })
+                }
+                else {
+                    this.setState({ searchedBooks: searchedBooks})
+                }
+            })
+        }
+        else {
+            this.setState({ searchedBooks: [] })
+        }
+    }*/
     
     render() { 
         return (
             <div id="location-sidebar">
+                {JSON.stringify(this.state)}
                 <div id="search-field">
                     <input
                         className='search-locations'
                         type='text'
                         placeholder='Search locations'
+                        value={this.state.query}
+                        onChange={(event) => this.updateQuery(event.target.value)}
                     />
                 </div>
                 <ul className="location-list">
