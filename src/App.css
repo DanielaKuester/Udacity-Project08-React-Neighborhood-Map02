@@ -35,6 +35,14 @@ body {
   flex-direction: column;
 }
 
+.search-locations {
+  margin: 20px;
+  height: 30px;
+  width: 80%;
+  padding: 10px 10px 10px 30px;
+  font-size: 1.3rem;
+}
+
 .button {
   margin-left: 15px;
 }

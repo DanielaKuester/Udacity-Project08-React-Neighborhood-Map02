@@ -5,6 +5,13 @@ class Sidebar extends Component {
     render() { 
         return (
             <div id="location-sidebar">
+                <div id="search-field">
+                    <input
+                        className='search-locations'
+                        type='text'
+                        placeholder='Search locations'
+                    />
+                </div>
                 <ul className="location-list">
                         {   
                             this.props.foursquareVenues
