@@ -44,7 +44,7 @@ class Sidebar extends Component {
         let showingLocations;
         if (this.state.query) {
             const match = new RegExp(escapeRegExp(this.state.query, 'i'))
-            showingLocations = this.props.foursquareVenues.filter((myVenue) => match.test(myVenue.venue.name))
+            showingLocations = this.props.foursquareVenues.filter((myVenue) => match.test(myVenue.venue.name.toLowerCase()))
         } else {
             showingLocations = this.props.foursquareVenues
         }
