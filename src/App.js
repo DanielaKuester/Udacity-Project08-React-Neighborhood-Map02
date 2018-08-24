@@ -13,7 +13,8 @@ class App extends Component {
             color: "blue"
         },
         markers: [],
-        isActiveMarker: null
+        isActiveMarker: null,
+        query: ''
     }
 
     /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
@@ -142,6 +143,10 @@ class App extends Component {
         this.getFoursquareVenues()
     }
 
+    updateQuery = (query) => {
+        this.setState({ query: query })
+    }
+
     render() {
         return (
             <div className="App">
@@ -152,6 +157,8 @@ class App extends Component {
                             handleClick={this.handleClick}
                             markers={this.state.markers}
                             activateMarker={this.activateMarker}
+                            query={this.state.query}
+                            updateQuery={this.updateQuery}
                         />
                     </aside>
                     <section>

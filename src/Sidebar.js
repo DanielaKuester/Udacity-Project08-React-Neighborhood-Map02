@@ -5,7 +5,6 @@ import sortBy from 'sort-by'
 class Sidebar extends Component {
 
     state = {
-        query: '',
         searchedLocations: []
     }
 
@@ -18,15 +17,11 @@ class Sidebar extends Component {
      * MyReads-project to see if I can save time by altering it.
      */
     
-    updateQuery = (query) => {
-        this.setState({ query: query })
-    }
-    
     render() {
 
         let showingLocations;
-        if (this.state.query.toLowerCase()) {
-            const match = new RegExp(escapeRegExp(this.state.query.toLowerCase(), 'i'))
+        if (this.props.query.toLowerCase()) {
+            const match = new RegExp(escapeRegExp(this.props.query.toLowerCase(), 'i'))
             showingLocations = this.props.foursquareVenues.filter((myVenue) => match.test(myVenue.venue.name.toLowerCase()))
         } else {
             showingLocations = this.props.foursquareVenues
@@ -43,7 +38,7 @@ class Sidebar extends Component {
                         type='text'
                         placeholder='Search locations'
                         value={this.state.query}
-                        onChange={(event) => this.updateQuery(event.target.value)}
+                        onChange={(event) => this.props.updateQuery(event.target.value)}
                     />
                 </div>
                 <ul className="location-list">
