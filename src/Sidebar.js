@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import escapeRegExp from 'escape-string-regexp'
 
 class Sidebar extends Component {
 
@@ -42,7 +43,16 @@ class Sidebar extends Component {
         }
     }*/
     
-    render() { 
+    render() {
+
+        let showingLocations;
+        if (this.state.query) {
+            const match = new RegExp(escapeRegExp(this.state.query, 'i'))
+            showingLocations = this.props.foursquareVenues.filter((myVenue) => match.test(myVenue.venue.name))
+        } else {
+            showingLocations = this.props.foursquareVenues
+        }
+
         return (
             <div id="location-sidebar">
                 {JSON.stringify(this.state)}
@@ -57,7 +67,7 @@ class Sidebar extends Component {
                 </div>
                 <ul className="location-list">
                         {   
-                            this.props.foursquareVenues
+                            showingLocations
                                 .map((myVenue) => (
                                     <li key={myVenue.venue.id}>
                                         {myVenue.venue.name}
