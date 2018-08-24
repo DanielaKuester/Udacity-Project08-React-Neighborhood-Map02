@@ -53,7 +53,7 @@ class Sidebar extends Component {
 
         return (
             <div id="location-sidebar">
-                {JSON.stringify(this.state)}
+                {/*JSON.stringify(this.state)*/}
                 <div id="search-field">
                     <input
                         className='search-locations'
