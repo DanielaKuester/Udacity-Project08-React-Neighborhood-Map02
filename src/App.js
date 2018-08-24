@@ -77,7 +77,10 @@ class App extends Component {
         this.state.foursquareVenues
             .map(myVenue => {
                 // Create popups with the data from the Foursquare API
-                const popup = new mapboxgl.Popup({offset: 40, className: `${[myVenue.venue.location.lng, myVenue.venue.location.lat]}`})
+                const popup = new mapboxgl.Popup({
+                    offset: 40,
+                    className: `${[myVenue.venue.location.lng, myVenue.venue.location.lat]}`
+                })
                     .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
                     .setHTML(
                         `<h1>${myVenue.venue.name}</h1>
@@ -118,7 +121,7 @@ class App extends Component {
         for (let i = 0; i < markersArray.length; i++) {
 
             // Match the class names of the Popups with the class Name of the clicked button
-            if (this.props.markers[i].getPopup().options.className === e.target.className) {
+            if (this.props.markers[i].getPopup().options.className === e.target.dataset.buttoncoord) {
                 console.log("You did it! You are a genius!");
                 const activeMarker = this.props.markers[i]
                 activeMarker.togglePopup()

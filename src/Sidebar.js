@@ -72,8 +72,8 @@ class Sidebar extends Component {
                                         <button
                                         type="button"
                                         key={myVenue.venue.id}
-                                        data-index={this.props.markers}
-                                        className={`${[myVenue.venue.location.lng, myVenue.venue.location.lat]}`}
+                                        data-buttoncoord={`${[myVenue.venue.location.lng, myVenue.venue.location.lat]}`}
+                                        className="sidebar-button"
                                         onClick={this.props.handleClick.bind(this)}
                                         >
                                             More info
