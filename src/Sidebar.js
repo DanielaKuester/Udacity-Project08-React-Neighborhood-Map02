@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 class Sidebar extends Component {
 
@@ -47,6 +48,8 @@ class Sidebar extends Component {
         } else {
             showingLocations = this.props.foursquareVenues
         }
+
+        showingLocations.sort(sortBy('venue.name'))
 
         return (
             <div id="location-sidebar">
