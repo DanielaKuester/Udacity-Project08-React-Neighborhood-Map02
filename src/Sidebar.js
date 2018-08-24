@@ -21,23 +21,6 @@ class Sidebar extends Component {
     updateQuery = (query) => {
         this.setState({ query: query })
     }
-
-    /*
-    updateSearchedBooks = (query) => {
-        if (query) {
-            BooksAPI.search(query).then((searchedBooks) => {
-                if (searchedBooks.error) {
-                    this.setState({ searchedBooks: [] })
-                }
-                else {
-                    this.setState({ searchedBooks: searchedBooks})
-                }
-            })
-        }
-        else {
-            this.setState({ searchedBooks: [] })
-        }
-    }*/
     
     render() {
 
