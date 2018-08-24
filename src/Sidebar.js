@@ -18,13 +18,8 @@ class Sidebar extends Component {
      */
     
     updateQuery = (query) => {
-        this.setState({ query })
+        this.setState({ query: query.trim() })
     }
-
-    /*
-    updateSearchedLocations = (query) => {
-        this.setState({ query })
-    }*/
 
     /*
     updateSearchedBooks = (query) => {
