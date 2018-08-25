@@ -4,6 +4,8 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js'
 import Map from './Map'
 import Sidebar from './Sidebar'
 import axios from 'axios'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 class App extends Component {
 
@@ -88,10 +90,6 @@ class App extends Component {
                         <p>${myVenue.venue.location.formattedAddress}</p>`
                     )
                 
-                //console.log(myVenue.venue.id)
-                //console.log(this.state.markers.length)
-                //console.log(this.state.id)
-                
                 // Create markers with the data from the Foursquare API
                 let marker = new mapboxgl.Marker({
                     color: this.state.markerProperties.color,
@@ -100,6 +98,17 @@ class App extends Component {
                 .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
                 .setPopup(popup)
                 .addTo(this.map)
+
+                /**
+                 * This tutorial helped me to *finally* store the data that I wanted to
+                 * store in my marker with the help of data-attributes:
+                 * https://www.w3schools.com/jsref/prop_object_data.asp
+                 * Also big thanks to Bram Vanroy who pointed out to me that data-attributes
+                 * exist. They are just incredibly useful! Like magic applied to coding!
+                 */
+
+                marker.getElement().data = myVenue.venue.name
+                console.log(marker.getElement().data)
 
                 return this.state.markers.push(marker)
             }, console.log(this.state.markers));
@@ -148,6 +157,17 @@ class App extends Component {
     }
 
     render() {
+
+        /*
+        let showingMarkers;
+        if (this.state.query.toLowerCase()) {
+            const match = new RegExp(escapeRegExp(this.state.query.toLowerCase(), 'i'))
+            showingMarkers = this.state.markers.filter((myMarker) => match.test(myMarker.toLowerCase()))
+        } else {
+            showingMarkers = this.state.markers
+        }
+        */
+
         return (
             <div className="App">
                 <main className="container">

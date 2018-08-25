@@ -8,7 +8,6 @@ class Map extends Component {
     }
 
     render() { 
-        console.log(this.props)
         return(
             <div id="map" className="map-container">
                 {/* Initialise the map here*/}
