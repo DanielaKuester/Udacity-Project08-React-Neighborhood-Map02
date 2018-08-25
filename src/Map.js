@@ -7,7 +7,7 @@ class Map extends Component {
         this.props.initialiseMap()
     }
 
-    render() { 
+    render() {
         return(
             <div id="map" className="map-container">
                 {/* Initialise the map here*/}

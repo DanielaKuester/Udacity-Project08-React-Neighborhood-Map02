@@ -5,7 +5,6 @@ import Map from './Map'
 import Sidebar from './Sidebar'
 import axios from 'axios'
 import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
 
 class App extends Component {
 
@@ -16,7 +15,8 @@ class App extends Component {
         },
         markers: [],
         isActiveMarker: null,
-        query: ''
+        query: '',
+        filteredMarkers: []
     }
 
     /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
@@ -158,15 +158,20 @@ class App extends Component {
 
     render() {
 
-        /*
-        let showingMarkers;
+        let showingMarkers = this.state.markers
+    
         if (this.state.query.toLowerCase()) {
             const match = new RegExp(escapeRegExp(this.state.query.toLowerCase(), 'i'))
-            showingMarkers = this.state.markers.filter((myMarker) => match.test(myMarker.toLowerCase()))
+            showingMarkers = this.state.markers.filter((myMarker) => match.test(
+                myMarker.getElement().data.toLowerCase()
+            ))
+            //this.state.filteredMarkers = showingMarkers
+            console.log(`Showing Markers: ${showingMarkers}`)
+            console.log(`Filtered Markers: ${this.state.filteredMarkers}`)
+            console.log(`First filtered marker: ${this.state.filteredMarkers[0]}`)
         } else {
             showingMarkers = this.state.markers
         }
-        */
 
         return (
             <div className="App">
@@ -186,6 +191,10 @@ class App extends Component {
                             venues={this.state.foursquareVenues}
                             initialiseMap={this.initialiseMap}
                             addMarkers={this.addMarkers}
+                            filteredMarkers={this.state.filteredMarkers}
+                            query={this.state.query}
+                            updateQuery={this.updateQuery}
+                            markers={this.state.markers}
                         />
                     </section>
                 </main>
