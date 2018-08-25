@@ -95,7 +95,7 @@ class App extends Component {
                 // Create markers with the data from the Foursquare API
                 let marker = new mapboxgl.Marker({
                     color: this.state.markerProperties.color,
-                    className: myVenue.venue.id
+                    className: myVenue.venue.name
                 })
                 .setLngLat([myVenue.venue.location.lng, myVenue.venue.location.lat])
                 .setPopup(popup)
