@@ -165,7 +165,7 @@ class App extends Component {
             showingMarkers = this.state.markers.filter((myMarker) => match.test(
                 myMarker.getElement().data.toLowerCase()
             ))
-            //this.state.filteredMarkers = showingMarkers
+            this.state.filteredMarkers = showingMarkers
             console.log(`Showing Markers: ${showingMarkers}`)
             console.log(`Filtered Markers: ${this.state.filteredMarkers}`)
             console.log(`First filtered marker: ${this.state.filteredMarkers[0]}`)
