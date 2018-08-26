@@ -56,7 +56,7 @@ class Sidebar extends Component {
                                         className="sidebar-button"
                                         onClick={this.props.handleClick.bind(this)}
                                         >
-                                            More info
+                                            Info
                                         </button>
                                         {myVenue.venue.name}
                                     </li>
