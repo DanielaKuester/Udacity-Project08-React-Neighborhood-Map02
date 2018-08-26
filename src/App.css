@@ -42,6 +42,7 @@ body {
 .location-list-item {
   list-style: none outside;
   font-size: 1.3rem;
+  margin-right: 30px;
   /*display: flex;
   flex-wrap: wrap;
   flex-direction: row;*/
