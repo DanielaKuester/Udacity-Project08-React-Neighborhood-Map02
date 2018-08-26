@@ -66,6 +66,9 @@ class App extends Component {
 
         this.map.on('load', () => {
             this.addMarkers();
+
+            // Add navigation controls to the map.
+            this.map.addControl(new mapboxgl.NavigationControl());
         })
     }
 
