@@ -13,10 +13,10 @@ class App extends Component {
         markerProperties: {
             color: "blue"
         },
-        markers: [],
         isActiveMarker: null,
         query: '',
-        filteredMarkers: []
+        markers: [],
+        showingMarkers: []
     }
 
     /** Important: I used this tutorial by Elharony to learn how to fetch data from Foursquare:
@@ -157,11 +157,31 @@ class App extends Component {
 
     updateQuery = (query) => {
         this.setState({ query: query })
+        this.updateMarkers(query);
+    }
+
+    updateMarkers = (query) => {
+        let showingMarkers = this.state.markers
+    
+        if (this.state.query.toLowerCase()) {
+            const match = new RegExp(escapeRegExp(this.state.query.toLowerCase(), 'i'))
+            showingMarkers = this.state.markers.filter((myMarker) => match.test(
+                myMarker.getElement().data.toLowerCase()
+            ))
+            this.setState({
+                showingMarkers: showingMarkers
+            })
+            console.log(`Showing Markers: ${showingMarkers}`)
+            console.log(`Filtered Markers: ${this.state.showingMarkers}`)
+            console.log(`First filtered marker: ${this.state.showingMarkers[0]}`)
+        } else {
+            this.setState({ showingMarkers: this.state.markers })
+        }
     }
 
     render() {
 
-        let showingMarkers = this.state.markers
+        /*let showingMarkers = this.state.markers
     
         if (this.state.query.toLowerCase()) {
             const match = new RegExp(escapeRegExp(this.state.query.toLowerCase(), 'i'))
@@ -174,7 +194,7 @@ class App extends Component {
             console.log(`First filtered marker: ${this.state.filteredMarkers[0]}`)
         } else {
             showingMarkers = this.state.markers
-        }
+        }*/
 
         return (
             <div className="App">
@@ -197,6 +217,7 @@ class App extends Component {
                             filteredMarkers={this.state.filteredMarkers}
                             query={this.state.query}
                             updateQuery={this.updateQuery}
+                            updateMarkers={this.updateMarkers}
                             markers={this.state.markers}
                         />
                     </section>
