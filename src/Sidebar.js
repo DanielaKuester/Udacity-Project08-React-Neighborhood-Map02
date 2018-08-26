@@ -45,8 +45,10 @@ class Sidebar extends Component {
                         {   
                             showingLocations
                                 .map((myVenue) => (
-                                    <li key={myVenue.venue.id}>
-                                        {myVenue.venue.name}
+                                    <li
+                                        key={myVenue.venue.id}
+                                        className="location-list-item"
+                                    >
                                         <button
                                         type="button"
                                         key={myVenue.venue.id}
@@ -56,6 +58,7 @@ class Sidebar extends Component {
                                         >
                                             More info
                                         </button>
+                                        {myVenue.venue.name}
                                     </li>
                                 ))
                         }

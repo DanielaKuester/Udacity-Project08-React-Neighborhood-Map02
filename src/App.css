@@ -39,14 +39,24 @@ body {
   flex-direction: column;
 }
 
+.location-list-item {
+  list-style: none outside;
+  font-size: 1.3rem;
+  /*display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;*/
+}
+
 .search-locations {
-  margin: 20px;
+  margin: 15px 40px 0px 40px;
   height: 30px;
-  width: 80%;
+  width: 75%;
   padding: 10px 10px 10px 30px;
   font-size: 1.3rem;
 }
 
-.button {
-  margin-left: 15px;
+.sidebar-button {
+  height: 25px;
+  margin-right: 20px;
+  font-size: 1.2rem;
 }
