@@ -33,7 +33,8 @@ body {
   position: absolute;
   width: 30%;
   height: 100%;
-  background-color: mediumseagreen;
+  background-image: linear-gradient(to bottom right, mediumseagreen, turquoise, yellow);
+  /*background-color: mediumseagreen;*/
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
