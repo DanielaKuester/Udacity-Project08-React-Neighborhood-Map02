@@ -180,22 +180,7 @@ class App extends Component {
     }
 
     render() {
-
-        /*let showingMarkers = this.state.markers
-    
-        if (this.state.query.toLowerCase()) {
-            const match = new RegExp(escapeRegExp(this.state.query.toLowerCase(), 'i'))
-            showingMarkers = this.state.markers.filter((myMarker) => match.test(
-                myMarker.getElement().data.toLowerCase()
-            ))
-            this.state.filteredMarkers = showingMarkers
-            console.log(`Showing Markers: ${showingMarkers}`)
-            console.log(`Filtered Markers: ${this.state.filteredMarkers}`)
-            console.log(`First filtered marker: ${this.state.filteredMarkers[0]}`)
-        } else {
-            showingMarkers = this.state.markers
-        }*/
-
+        
         return (
             <div className="App">
                 <main className="container">
