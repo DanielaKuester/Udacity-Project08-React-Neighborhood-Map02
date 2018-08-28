@@ -19,6 +19,10 @@ body {
   cursor: pointer;
 }
 
+.mapboxgl-popup {
+  width: 250px;
+}
+
 .mapboxgl-popup-content {
   font-size: 1rem;
 }
