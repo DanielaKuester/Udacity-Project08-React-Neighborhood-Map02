@@ -112,6 +112,7 @@ class App extends Component {
                  */
 
                 marker.getElement().data = myVenue.venue.name;
+                marker.getElement().classList.add("animated")
                 return marker;
             })
         /**
@@ -137,6 +138,7 @@ class App extends Component {
             if (this.props.showingMarkers[i].getPopup().options.className === e.target.dataset.buttoncoord) {
                 const activeMarker = this.props.showingMarkers[i]
                 activeMarker.togglePopup()
+                activeMarker.getElement().classList.add("flash")
             } else {
                 this.props.showingMarkers[i].getPopup()._onClickClose();
             }
