@@ -127,25 +127,18 @@ class App extends Component {
             markerProperties: {color: "red"}
         })
     }
-
+ 
     handleClick(e) {
         e.preventDefault();
-        console.log("This button still works.")
-        let markersArray = this.props.markers
+        let markersArray = this.props.showingMarkers
         for (let i = 0; i < markersArray.length; i++) {
-
+            this.props.showingMarkers[i].getPopup()
             // Match the class names of the Popups with the class Name of the clicked button
-            if (this.props.markers[i].getPopup().options.className === e.target.dataset.buttoncoord) {
-                const activeMarker = this.props.markers[i]
+            if (this.props.showingMarkers[i].getPopup().options.className === e.target.dataset.buttoncoord) {
+                const activeMarker = this.props.showingMarkers[i]
                 activeMarker.togglePopup()
-                    /*if (this.props.markers[i] === activeMarker) {
-                        activeMarker.togglePopup()
-                        console.log(`Active Marker: ${this.props.isActiveMarker}`)
-                        this.props.activateMarker
-                    }*/
-                this.props.activateMarker()
             } else {
-                markersArray[i].getPopup()._onClickClose();
+                this.props.showingMarkers[i].getPopup()._onClickClose();
             }
         }
         
@@ -196,6 +189,7 @@ class App extends Component {
                             activateMarker={this.activateMarker}
                             query={this.state.query}
                             updateQuery={this.updateQuery}
+                            showingMarkers={this.state.showingMarkers}
                         />
                     </aside>
                     <section>
@@ -203,7 +197,6 @@ class App extends Component {
                             venues={this.state.foursquareVenues}
                             initialiseMap={this.initialiseMap}
                             addMarkers={this.addMarkers}
-                            filteredMarkers={this.state.filteredMarkers}
                             query={this.state.query}
                             updateQuery={this.updateQuery}
                             updateMarkers={this.updateMarkers}
