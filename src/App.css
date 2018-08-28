@@ -41,6 +41,10 @@ body {
   overflow: auto;
 }
 
+.credits {
+  margin-left: 40px;
+}
+
 .location-list-item {
   list-style: none outside;
   font-size: 1.3rem;

@@ -41,6 +41,7 @@ class Sidebar extends Component {
                         onChange={(event) => this.props.updateQuery(event.target.value)}
                     />
                 </div>
+                <p class="credits">This project was made with Mapbox and the Foursquare API.</p>
                 <ul className="location-list">
                         {   
                             showingLocations

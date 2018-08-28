@@ -42,6 +42,7 @@ class App extends Component {
                 })
             })
             .catch(error => {
+                alert("Error: Couldn't retrieve data from Foursquare.")
                 console.log(`An error occurred: ${error}`)
             })
     }
