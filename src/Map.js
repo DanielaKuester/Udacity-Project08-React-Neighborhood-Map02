@@ -23,7 +23,12 @@ class Map extends Component {
     render() {
         this.displayMarkers();
         return(
-            <div id="map" className="map-container">
+            <div
+                id="map"
+                className="map-container"
+                role="application"
+                tabIndex="0"
+            >
                 {/* Initialise the map here*/}
             </div>
         );

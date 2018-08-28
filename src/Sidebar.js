@@ -32,17 +32,19 @@ class Sidebar extends Component {
         return (
             <div id="location-sidebar">
                 {/*JSON.stringify(this.state)*/}
+                <h2 className="art-lyon" tabIndex="0">Art in Lyon, France</h2>
+                <p className="credits">This project was made with Mapbox and the Foursquare API.</p>
                 <div id="search-field">
                     <input
                         className='search-locations'
                         id="search"
                         type='text'
                         placeholder='Search locations'
+                        aria-label='Search for art locations in Lyon'
                         value={this.state.query}
                         onChange={(event) => this.props.updateQuery(event.target.value)}
                     />
                 </div>
-                <p className="credits">This project was made with Mapbox and the Foursquare API.</p>
                 <ul className="location-list">
                         {   
                             showingLocations
