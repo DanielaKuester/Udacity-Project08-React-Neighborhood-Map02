@@ -113,6 +113,7 @@ class App extends Component {
 
                 marker.getElement().data = myVenue.venue.name;
                 marker.getElement().classList.add("animated")
+                marker.getElement().addEventListener('click', this.activateMarker)
                 return marker;
             })
         /**
@@ -122,11 +123,9 @@ class App extends Component {
         this.setState({ markers: allMarkers, showingMarkers: allMarkers });
     }
 
-    activateMarker = () => {
-        this.setState({
-            isActiveMarker: true,
-            markerProperties: {color: "red"}
-        })
+    activateMarker = (e) => {
+        e.preventDefault();
+        e.currentTarget.classList.toggle("flash")
     }
  
     handleClick(e) {
@@ -137,8 +136,8 @@ class App extends Component {
             // Match the class names of the Popups with the class Name of the clicked button
             if (this.props.showingMarkers[i].getPopup().options.className === e.target.dataset.buttoncoord) {
                 const activeMarker = this.props.showingMarkers[i]
+                activeMarker.getElement().classList.toggle("flash")
                 activeMarker.togglePopup()
-                activeMarker.getElement().classList.add("flash")
             } else {
                 this.props.showingMarkers[i].getPopup()._onClickClose();
             }
@@ -205,6 +204,7 @@ class App extends Component {
                             markers={this.state.markers}
                             showingMarkers={this.state.showingMarkers}
                             mapElement={this.map}
+                            activateMarker={this.activateMarker}
                         />
                     </section>
                 </main>
