@@ -35,13 +35,14 @@ class Sidebar extends Component {
                 <div id="search-field">
                     <input
                         className='search-locations'
+                        id="search"
                         type='text'
                         placeholder='Search locations'
                         value={this.state.query}
                         onChange={(event) => this.props.updateQuery(event.target.value)}
                     />
                 </div>
-                <p class="credits">This project was made with Mapbox and the Foursquare API.</p>
+                <p className="credits">This project was made with Mapbox and the Foursquare API.</p>
                 <ul className="location-list">
                         {   
                             showingLocations

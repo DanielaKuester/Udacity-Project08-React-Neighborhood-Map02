@@ -59,11 +59,50 @@ body {
   height: 30px;
   width: 75%;
   padding: 10px 10px 10px 30px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .sidebar-button {
   height: 25px;
   margin-right: 20px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+}
+
+/**
+ * Make site responsive to *very* small phones
+ */
+@media screen and (max-width: 350px){
+
+  #search {
+    width: 300px;
+  }
+
+  body {
+    font-size: 1rem;
+  }
+}
+
+
+/*
+ * Make site responsive to small phones
+ */
+@media screen and (max-width: 400px){
+
+  #search {
+    width: 360px;
+  }
+}
+
+/*
+ * Make site responsive to phones
+ */
+@media screen and (min-width: 401px) and (max-width: 600px){
+
+}
+
+/*
+ * Make site responsive to tablets
+ */
+@media screen and (min-width: 601px) and (max-width: 800px){
+
 }
