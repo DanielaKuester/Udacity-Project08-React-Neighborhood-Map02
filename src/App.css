@@ -33,7 +33,7 @@ body {
   position: absolute;
   width: 30%;
   height: 100%;
-  background-image: linear-gradient(to bottom right, mediumseagreen, turquoise, yellow);
+  background-image: linear-gradient( mediumseagreen, turquoise, yellow);
   /*background-color: mediumseagreen;*/
   display: flex;
   flex-wrap: wrap;
