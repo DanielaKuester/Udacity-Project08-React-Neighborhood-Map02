@@ -40,7 +40,6 @@ class App extends Component {
                 this.setState({
                     foursquareVenues: response.data.response.groups[0].items
                 })
-                console.log(this.state.foursquareVenues)
             })
             .catch(error => {
                 console.log(`An error occurred: ${error}`)
@@ -63,6 +62,8 @@ class App extends Component {
             center: [4.841389, 45.758889],
             zoom: 12
         });
+        // Store the map element in a variable that will pe passed to the Map component
+        window.map = this.map;
 
         this.map.on('load', () => {
             this.addMarkers();
@@ -80,7 +81,7 @@ class App extends Component {
      * https://www.youtube.com/watch?v=_1RjbT5dIeM&list=PLgOB68PvvmWCGNn8UMTpcfQEiITzxEEA1&index=5
     */
     addMarkers = () => {
-        this.state.foursquareVenues
+        const allMarkers = this.state.foursquareVenues
             .map(myVenue => {
                 // Create popups with the data from the Foursquare API
                 const popup = new mapboxgl.Popup({
@@ -110,11 +111,14 @@ class App extends Component {
                  * exist. They are just incredibly useful! Like magic applied to coding!
                  */
 
-                marker.getElement().data = myVenue.venue.name
-                console.log(marker.getElement().data)
-
-                return this.state.markers.push(marker)
-            }, console.log(this.state.markers));
+                marker.getElement().data = myVenue.venue.name;
+                return marker;
+            })
+        /**
+         * The following change of the state makes sure that at the beginning,
+         * all of the markers are shown.
+         */ 
+        this.setState({ markers: allMarkers, showingMarkers: allMarkers });
     }
 
     activateMarker = () => {
@@ -122,20 +126,16 @@ class App extends Component {
             isActiveMarker: true,
             markerProperties: {color: "red"}
         })
-        console.log(this.state.isActiveMarker)
-        console.log(this.state.markerProperties)
     }
 
     handleClick(e) {
         e.preventDefault();
-        console.log(e.target.className)
-        console.log(e.target)
+        console.log("This button still works.")
         let markersArray = this.props.markers
         for (let i = 0; i < markersArray.length; i++) {
 
             // Match the class names of the Popups with the class Name of the clicked button
             if (this.props.markers[i].getPopup().options.className === e.target.dataset.buttoncoord) {
-                console.log("You did it! You are a genius!");
                 const activeMarker = this.props.markers[i]
                 activeMarker.togglePopup()
                     /*if (this.props.markers[i] === activeMarker) {
@@ -160,20 +160,24 @@ class App extends Component {
         this.updateMarkers(query);
     }
 
+    /**
+     * After I was stuck for days, Bartek Burkot helped me to
+     * rewrite this function so that it updates the markers properly.
+     */
     updateMarkers = (query) => {
-        let showingMarkers = this.state.markers
+        let showingMarkers = this.state.markers;
     
-        if (query.toLowerCase()) {
+        if (query) {
             const match = new RegExp(escapeRegExp(query.toLowerCase(), 'i'))
-            showingMarkers = this.state.markers.filter((myMarker) => match.test(
-                myMarker.getElement().data.toLowerCase()
-            ))
+            showingMarkers = this.state.markers.filter((myMarker) => {
+                return match.test(
+                    myMarker.getElement().data.toLowerCase()
+                )
+            }
+            )
             this.setState({
                 showingMarkers: showingMarkers
             })
-            console.log(`Showing Markers: ${showingMarkers}`)
-            console.log(`Filtered Markers: ${this.state.showingMarkers}`)
-            console.log(`First filtered marker: ${this.state.showingMarkers[0]}`)
         } else {
             this.setState({ showingMarkers: this.state.markers })
         }
@@ -204,6 +208,8 @@ class App extends Component {
                             updateQuery={this.updateQuery}
                             updateMarkers={this.updateMarkers}
                             markers={this.state.markers}
+                            showingMarkers={this.state.showingMarkers}
+                            mapElement={this.map}
                         />
                     </section>
                 </main>
