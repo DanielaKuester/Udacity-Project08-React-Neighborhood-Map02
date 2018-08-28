@@ -163,8 +163,8 @@ class App extends Component {
     updateMarkers = (query) => {
         let showingMarkers = this.state.markers
     
-        if (this.state.query.toLowerCase()) {
-            const match = new RegExp(escapeRegExp(this.state.query.toLowerCase(), 'i'))
+        if (query.toLowerCase()) {
+            const match = new RegExp(escapeRegExp(query.toLowerCase(), 'i'))
             showingMarkers = this.state.markers.filter((myMarker) => match.test(
                 myMarker.getElement().data.toLowerCase()
             ))
