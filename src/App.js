@@ -72,6 +72,10 @@ class App extends Component {
             // Add navigation controls to the map.
             this.map.addControl(new mapboxgl.NavigationControl());
         })
+
+        if(!this.map.loaded()) {
+            alert("An error occurred. Map cannot be loaded. Maybe my turtle mistook it for a salad leaf and ate it. ;-)")
+        }
     }
 
 
