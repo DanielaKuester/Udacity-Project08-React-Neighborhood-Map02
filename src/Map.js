@@ -30,6 +30,11 @@ class Map extends Component {
                 tabIndex="0"
             >
                 {/* Initialise the map here*/}
+
+                {/* The following Text only shows if the  */}
+                <div id="background">
+                    Ooooops! The map can't load!
+                </div>
             </div>
         );
     }
