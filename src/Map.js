@@ -31,7 +31,9 @@ class Map extends Component {
             >
                 {/* Initialise the map here*/}
 
-                {/* The following Text only shows if the  */}
+                {/* The following text only shows if the map doesn't load.
+                The error handling that I wanted to have (an alarm) was always off sync
+                so I decided to show a background text message instead. */}
                 <div id="background">
                     Ooooops! The map can't load!
                 </div>
